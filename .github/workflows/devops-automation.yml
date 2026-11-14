@@ -1,0 +1,32 @@
+name: devops-automation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validar-y-construir:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar codigo
+        uses: actions/checkout@v4
+
+      - name: Verificar archivos obligatorios
+        run: |
+          for f in src/index.html src/styles.css Dockerfile docker-compose.yml .env.example .gitignore README.md; do
+            test -f "$f" || { echo "Falta $f"; exit 1; }
+          done
+
+      - name: Validar docker compose
+        run: docker compose config
+
+      - name: Construir imagen
+        run: docker build -t reserva-horas-web .
+
+      - name: Probar respuesta HTTP
+        run: |
+          docker run -d --name test -p 8080:80 reserva-horas-web
+          sleep 5
+          curl -f http://localhost:8080
