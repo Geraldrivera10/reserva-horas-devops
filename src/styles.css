@@ -1,0 +1,13 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; background: #f2f6fa; color: #1f2d3d; }
+header { background: #0b5fa5; color: #fff; padding: 24px; text-align: center; }
+header h1 { margin: 0 0 4px; }
+main { max-width: 720px; margin: 24px auto; padding: 0 16px; display: grid; gap: 16px; }
+.card { background: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12); }
+.aviso { font-size: 0.9rem; color: #7a4b00; }
+label { display: block; margin-top: 12px; font-weight: bold; }
+input, select { width: 100%; padding: 8px; margin-top: 4px; border: 1px solid #b8c4d0; border-radius: 4px; }
+button { margin-top: 16px; padding: 10px 20px; background: #0b5fa5; color: #fff; border: 0; border-radius: 4px; cursor: pointer; }
+button:hover { background: #084a82; }
+.punto { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #2e9e4f; margin-right: 6px; }
+@media (max-width: 480px) { header { padding: 16px; } .card { padding: 14px; } }
